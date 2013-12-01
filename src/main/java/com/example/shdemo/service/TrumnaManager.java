@@ -34,7 +34,6 @@ public class TrumnaManager {
 		sessionFactory.getCurrentSession().delete(trumna);
 	}
 	
-	
 	public void updateTrumna(Trumna trumna){
 		sessionFactory.getCurrentSession().update(trumna);
 	}
@@ -43,6 +42,13 @@ public class TrumnaManager {
 		return (Trumna) sessionFactory.getCurrentSession().get(Trumna.class, id);	
 		
 	}
+	
+	public Trumna getTrumnaNazwa(String nazwa){
+		return (Trumna) sessionFactory.getCurrentSession().getNamedQuery("trumna.dell").setString("nazwa", nazwa).uniqueResult();
+	}
+	
+	
+	
 	
 	@SuppressWarnings("unchecked")
 	public List<Trumna> getAllTrumna() {

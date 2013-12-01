@@ -9,7 +9,8 @@ import javax.persistence.NamedQuery;
 
 @Entity
 @NamedQueries({
-		@NamedQuery(name = "trumna.all", query = "Select t from Trumna t")
+		@NamedQuery(name = "trumna.all", query = "Select t from Trumna t"),
+		@NamedQuery(name = "trumna.dell", query = "Select t from Trumna t where t.nazwa = :nazwa")
 })
 public class Trumna {
 
