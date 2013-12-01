@@ -92,15 +92,15 @@ public class TrumnaManagerTest {
 	@Test
 	public void deleteTrumna(){
 	
-		
-		
+		List <Trumna> trumna = trumnaManager.getAllTrumna();
+		int liczba = trumna.size();
 		
 		Trumna trumienka = trumnaManager.getTrumnaNazwa(NAZWA_1);
 		trumnaManager.deleteTrumna(trumienka);
 		assertEquals(null, trumnaManager.getTrumnaNazwa(NAZWA_1));
 		
-		List <Trumna> trumna = trumnaManager.getAllTrumna();
-		assertEquals(2, trumna.size());
+		trumna = trumnaManager.getAllTrumna();
+		assertEquals(2, liczba - 1);
 	}
 	
 	@Test
