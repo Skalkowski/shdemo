@@ -23,36 +23,34 @@ public class TrumnaManager {
 	public void setSessionFactory(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}
-	
-	
-	
+
 	public int addTrumna(Trumna trumna) {
 		return (Integer) sessionFactory.getCurrentSession().save(trumna);
 	}
-	
+
 	public void deleteTrumna(Trumna trumna) {
 		sessionFactory.getCurrentSession().delete(trumna);
 	}
-	
-	public void updateTrumna(Trumna trumna){
+
+	public void updateTrumna(Trumna trumna) {
 		sessionFactory.getCurrentSession().update(trumna);
 	}
 
-	public Trumna getTrumnaId(int id){
-		return (Trumna) sessionFactory.getCurrentSession().get(Trumna.class, id);	
-		
+	public Trumna getTrumnaId(int id) {
+		return (Trumna) sessionFactory.getCurrentSession()
+				.get(Trumna.class, id);
+
 	}
-	
-	public Trumna getTrumnaNazwa(String nazwa){
-		return (Trumna) sessionFactory.getCurrentSession().getNamedQuery("trumna.dell").setString("nazwa", nazwa).uniqueResult();
+
+	public Trumna getTrumnaNazwa(String nazwa) {
+		return (Trumna) sessionFactory.getCurrentSession()
+				.getNamedQuery("trumna.dell").setString("nazwa", nazwa)
+				.uniqueResult();
 	}
-	
-	
-	
-	
+
 	@SuppressWarnings("unchecked")
 	public List<Trumna> getAllTrumna() {
-	
+
 		return sessionFactory.getCurrentSession().getNamedQuery("trumna.all").list();
 	}
 
