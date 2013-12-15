@@ -251,5 +251,60 @@ public class CaloscManagerTest {
 		}
 
 	}
+	
+	
+	//wspolne
+	@Test
+	public void dodajTrumneDoGrabarza() {
+
+		Grabarz grabarz = new Grabarz();
+		grabarz.setImie("imielaczenia");
+		grabarz.setNazwisko("nazwiskolaczenia");
+
+		int grabarzLaczonyId =grabarzManager.addGrabarz(grabarz);
+
+
+
+		Trumna trumna = new Trumna();
+		trumna.setNazwa("nazwalaczona");
+		trumna.setGatunek_drewna("gatuneklaczony");
+
+		int trumnaLaczonaId = trumnaManager.addTrumna(trumna);
+		
+	
+
+		grabarzManager.lacz(grabarzLaczonyId, trumnaLaczonaId);
+		
+		int size = grabarzManager.getGrabarzId(grabarzLaczonyId).getListaTrumien().size() - 1;
+		assertEquals(trumnaLaczonaId, grabarzManager.getGrabarzId(grabarzLaczonyId).getListaTrumien().get(size).getId());
+	}
+	
+	@Test
+	public void sprawdzenieIlosci(){
+		Grabarz grabarz = new Grabarz();
+		grabarz.setImie("imielaczenia");
+		grabarz.setNazwisko("nazwiskolaczenia");
+		int grabarzek =grabarzManager.addGrabarz(grabarz);
+		
+		int sizePrzed = grabarzManager.getGrabarzId(grabarzek).getListaTrumien().size();
+		Trumna trumna1 = new Trumna();
+		trumna1.setNazwa("nazwalaczona");
+		trumna1.setGatunek_drewna("gatuneklaczony");
+		int trumienka1 = trumnaManager.addTrumna(trumna1);
+	
+		grabarzManager.lacz(grabarzek, trumienka1);
+		
+		Trumna trumna2 = new Trumna();
+		trumna2.setNazwa("nazwalaczona");
+		trumna2.setGatunek_drewna("gatuneklaczony");
+		int trumienka2 = trumnaManager.addTrumna(trumna2);
+		
+		grabarzManager.lacz(grabarzek, trumienka2);
+		int sizePo = grabarzManager.getGrabarzId(grabarzek).getListaTrumien().size();
+		assertEquals(sizePrzed + 2, sizePo);
+	
+	}
+
+
 
 }

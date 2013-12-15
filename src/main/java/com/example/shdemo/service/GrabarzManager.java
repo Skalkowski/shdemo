@@ -1,5 +1,6 @@
 package com.example.shdemo.service;
 
+
 import java.util.List;
 
 import org.hibernate.SessionFactory;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.shdemo.domain.Grabarz;
+import com.example.shdemo.domain.Trumna;
 
 @Component
 @Transactional
@@ -48,4 +50,22 @@ public class GrabarzManager {
 	public void updateGrabarz(Grabarz grabarz) {
 		sessionFactory.getCurrentSession().update(grabarz);
 	}
+	
+	
+	
+	
+	
+	public void lacz(int grabarzId, int trumnaId) {
+		Grabarz grabarz = (Grabarz) sessionFactory.getCurrentSession().get(
+				Grabarz.class, grabarzId);
+		Trumna trumna = (Trumna) sessionFactory.getCurrentSession()
+				.get(Trumna.class, trumnaId);
+		grabarz.getListaTrumien().add(trumna);
+	}
+	
+	
+
+	
+	
+	
 }
