@@ -51,7 +51,8 @@ public class TrumnaManager {
 	@SuppressWarnings("unchecked")
 	public List<Trumna> getAllTrumna() {
 
-		return sessionFactory.getCurrentSession().getNamedQuery("trumna.all").list();
+		return sessionFactory.getCurrentSession().getNamedQuery("trumna.all")
+				.list();
 	}
 
 }
